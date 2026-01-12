@@ -38,3 +38,6 @@ The final system takes a user's information, assigns them to a specific movie cl
 ### Recommendation Generation
 The project utilizes standard Collaborative Filtering techniques to generate results:
 * **User-Based Collaborative Filtering:** Finds a user's nearest neighbors based on rating patterns
+
+### DatasetResources:
+* **MovieLens dataset: https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
