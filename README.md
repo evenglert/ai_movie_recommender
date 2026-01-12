@@ -7,7 +7,13 @@ An AI-powered movie recommendation engine has been developed using a collaborati
 ---
 
 ## Business Description 📊
-This project addressed a key business challenge: user engagement and retention on a movie streaming platform. By providing highly relevant and personalized movie recommendations, the platform increases user satisfaction, encourages more frequent use, and ultimately drives higher revenue. The recommendation engine serves as a strategic tool to improve the overall customer experience and differentiate the platform from competitors. The integration of an LLM to generate personalized messages adds a layer of sophistication, making the recommendations feel like a personal suggestion rather than a generic list.
+This project addressed a key business challenge: user engagement and retention on a movie streaming platform. 
+
+By providing highly relevant and personalized movie recommendations, the platform increases user satisfaction, encourages more frequent use, and ultimately drives higher revenue. 
+
+The recommendation engine serves as a strategic tool to improve the overall customer experience and differentiate the platform from competitors. 
+
+The integration of an LLM to generate personalized messages adds a layer of sophistication, making the recommendations feel like a personal suggestion rather than a generic list.
 
 ---
 
@@ -28,7 +34,6 @@ The final system takes a user's information, assigns them to a specific movie cl
 
 ### Collaborative Filtering Implementation
 * **Logic:** The system identifies users with similar tastes (those who rated the same movies similarly) to answer: "What did people similar to me like?"
-* **Cold-Start Handling:** For users without explicit interactions, the system implements demographic filtering using user clusters derived from available demographic data.
 
 ### Recommendation Generation
 The project utilizes standard Collaborative Filtering techniques to generate results:
