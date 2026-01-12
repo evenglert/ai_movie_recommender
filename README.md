@@ -40,4 +40,4 @@ The project utilizes standard Collaborative Filtering techniques to generate res
 * **User-Based Collaborative Filtering:** Finds a user's nearest neighbors based on rating patterns
 
 ### DatasetResources:
-* **MovieLens dataset: https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
+* **MovieLens dataset:**  https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
