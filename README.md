@@ -43,8 +43,8 @@ The project utilizes standard Collaborative Filtering techniques to generate res
 * **User-Based Collaborative Filtering:** Finds a user's nearest neighbors based on rating patterns
 
 ### Modules
-evenglert_ai_movie_recommender_1_user_data_exploration_clustering     : Exploration of a user dataset for use in a recommendation engine
-evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering: Cluster-based collaborative filtering using PCA and K-Means
+* **evenglert_ai_movie_recommender_1_user_data_exploration_clustering     :** Exploration of a user dataset for use in a recommendation engine
+* **evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering:** Cluster-based collaborative filtering using PCA and K-Means
 
 ### DatasetResources:
 * **MovieLens dataset:**  https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
