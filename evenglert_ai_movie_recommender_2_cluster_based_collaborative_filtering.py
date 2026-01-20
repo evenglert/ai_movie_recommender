@@ -78,6 +78,7 @@
 # * Recall@10: mean=0.0018, std=0.0006
 # * F1-Score@10: mean=0.0003, std=0.0001
 # * Evaluated Users: 6015
+# * Fold Execution Time (s): mean=50.0872, std=10.3230 ⏱️
 # * Total Execution Time: 252 seconds ⏱️
 # 
 # **High-level architecture**
