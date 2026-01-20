@@ -18,9 +18,12 @@ The integration of an LLM to generate personalized messages adds a layer of soph
 ---
 
 ## Data Science Description 🔬
-This project was built as a user-centric collaborative filtering recommendation system. The core methodology involved using unsupervised machine learning, specifically k-means clustering, to group users with similar movie profiles. The project processed the MovieLens dataset, containing user data, ratings, and movie information. 
+This project was built as a user-centric collaborative filtering recommendation system. 
+The core methodology involved using unsupervised machine learning, specifically k-means clustering, to group users with similar movie profiles. 
+The project processed the MovieLens dataset, containing user data, ratings, and movie information. 
 
-The final system takes a user's information, assigns them to a specific movie cluster, and provides recommendations based on the most popular movies within that cluster. The use of an LLM for personalized messages introduced a natural language generation (NLG) component, adding a novel layer to the recommendation process.
+The final system takes a user's information, assigns them to a specific movie cluster, and provides recommendations based on the most popular movies within that cluster. 
+The use of an LLM for personalized messages introduced a natural language generation (NLG) component, adding a novel layer to the recommendation process.
 
 ---
 
@@ -38,6 +41,10 @@ The final system takes a user's information, assigns them to a specific movie cl
 ### Recommendation Generation
 The project utilizes standard Collaborative Filtering techniques to generate results:
 * **User-Based Collaborative Filtering:** Finds a user's nearest neighbors based on rating patterns
+
+### Modules
+evenglert_ai_movie_recommender_1_user_data_exploration_clustering     : Exploration of a user dataset for use in a recommendation engine
+evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering: Cluster-based collaborative filtering using PCA and K-Means
 
 ### DatasetResources:
 * **MovieLens dataset:**  https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
