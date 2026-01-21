@@ -44,7 +44,9 @@ The project utilizes standard Collaborative Filtering techniques to generate res
 
 ### Modules
 * **evenglert_ai_movie_recommender_1_user_data_exploration_clustering     :** Exploration of a user dataset for use in a recommendation engine
-* **evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering:** Cluster-based collaborative filtering using PCA and K-Means
+* **evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering:** Cluster-based collaborative filtering using PCA, K-Means
+* **evenglert_ai_movie_recommender_3_user_based_collaborative_filtering_cosine_similarity:** User-Based Collaborative Filtering (UBCF) pipeline using cosine similarity to find similar users (neighbors)
+* **evenglert_ai_movie_recommender_4_user_based_collaborative_filtering_pearson_correlation:** Optimized User-Based Collaborative Filtering (UBCF) pipeline using Pearson correlation
 
 ### DatasetResources:
 * **MovieLens dataset:**  https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
