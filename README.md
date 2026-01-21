@@ -7,14 +7,10 @@ This repository contains the documentation and architectural overview for the **
 ## 📈 Business Problem
 
 Modern streaming platforms face the challenge of keeping users engaged amidst overwhelming content. This project solves this by:
-* 
-**Increasing User Satisfaction**: Delivering suggestions that match specific preferences.
 
-* 
-**Boosting Engagement**: Driving longer sessions and higher viewing frequency.
-
-* 
-**Strategic Differentiation**: Transforming algorithmic outputs into "human-like" communication to make users feel personally valued.
+* **Increasing User Satisfaction**: Delivering suggestions that match specific preferences.
+* **Boosting Engagement**: Driving longer sessions and higher viewing frequency.
+* **Strategic Differentiation**: Transforming algorithmic outputs into "human-like" communication to make users feel personally valued.
 
 ---
 
@@ -22,26 +18,15 @@ Modern streaming platforms face the challenge of keeping users engaged amidst ov
 
 The project utilizes the **MovieLens 1M dataset**:
 
-* 
-**Users**: 6,040 
-
-* 
-**Movies**: ~3,900 
-
-* 
-**Ratings**: ~1,000,000 
+* **Users**: 6,040 
+* **Movies**: ~3,900 
+* **Ratings**: ~1,000,000 
 
 | Dataset | Attributes | Role in Analysis |
 | --- | --- | --- |
-| **Users** | UserID, Gender, Age, Occupation, Zip-code | Used to enhance personalization.
-
- |
-| **Ratings** | UserID, MovieID, Rating, Timestamp (dropped) | Used to construct the User-Item Matrix for training.
-
- |
-| **Movies** | MovieID, Title, Genres | Used for interpreting results and presenting recommendations.
-
- |
+| **Users** | UserID, Gender, Age, Occupation, Zip-code | Used to enhance personalization.|
+| **Ratings** | UserID, MovieID, Rating, Timestamp (dropped) | Used to construct the User-Item Matrix for training.|
+| **Movies** | MovieID, Title, Genres | Used for interpreting results and presenting recommendations.|
 
 ---
 
@@ -53,15 +38,9 @@ Multiple collaborative filtering (CF) approaches were tested to identify the bes
 
 | CF Approach | Precision@10 | Recall@10 | F1-Score@10 | Execution Time | Outcome |
 | --- | --- | --- | --- | --- | --- |
-| **User-Based (Cosine)** | **0.2325** | **0.8358** | **0.3414** | **143 sec** | <br>**Selected Model** 
-
- |
-| User-Based (Pearson) | 0.0334 | 0.2498 | 0.0575 | ~128 min | Rejected 
-
- |
-| Cluster-Based | 0.0002 | 0.0023 | 0.0004 | 252 sec | Fast but poor quality 
-
- |
+| **User-Based (Cosine)** | **0.2325** | **0.8358** | **0.3414** | **143 sec** | <br>**Selected Model** |
+| User-Based (Pearson) | 0.0334 | 0.2498 | 0.0575 | ~128 min | Rejected |
+| Cluster-Based | 0.0002 | 0.0023 | 0.0004 | 252 sec | Fast but poor quality |
 | Item-Based | 0.0018 | 0.0175 | 0.0033 | ~4.4 hrs | Rejected |
 ---
 ## 🧠 Final Architecture
