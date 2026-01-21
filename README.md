@@ -1,52 +1,101 @@
-# ai_movie_recommender
-# AI-Powered Movie Recommendations
-## Author: Evgeniya Englert
+# README: AI-Powered Movie Recommendation System 🎬✨
 
-An AI-powered movie recommendation engine has been developed using a collaborative filtering approach. The project leverages data from signed-in users to identify similar profiles based on provided movie ratings and recommends titles based on the viewing habits of those similar users. A Large Language Model (LLM) personalizes the recommendations with custom messages, enhancing the user experience.
+This repository contains the documentation and architectural overview for the **AI-Powered Movie Recommendation System**, a final project by **Evgeniya Englert**. The system addresses user retention challenges on streaming platforms by merging traditional collaborative filtering with a **Large Language Model (LLM)** for a human-centered experience.
 
 ---
 
-## Business Description 📊
-This project addressed a key business challenge: user engagement and retention on a movie streaming platform. 
+## 📈 Business Problem
 
-By providing highly relevant and personalized movie recommendations, the platform increases user satisfaction, encourages more frequent use, and ultimately drives higher revenue. 
+Modern streaming platforms face the challenge of keeping users engaged amidst overwhelming content. This project solves this by:
+* 
+**Increasing User Satisfaction**: Delivering suggestions that match specific preferences.
 
-The recommendation engine serves as a strategic tool to improve the overall customer experience and differentiate the platform from competitors. 
+* 
+**Boosting Engagement**: Driving longer sessions and higher viewing frequency.
 
-The integration of an LLM to generate personalized messages adds a layer of sophistication, making the recommendations feel like a personal suggestion rather than a generic list.
-
----
-
-## Data Science Description 🔬
-This project was built as a user-centric collaborative filtering recommendation system. 
-The core methodology involved using unsupervised machine learning, specifically k-means clustering, to group users with similar movie profiles. 
-The project processed the MovieLens dataset, containing user data, ratings, and movie information. 
-
-The final system takes a user's information, assigns them to a specific movie cluster, and provides recommendations based on the most popular movies within that cluster. 
-The use of an LLM for personalized messages introduced a natural language generation (NLG) component, adding a novel layer to the recommendation process.
+* 
+**Strategic Differentiation**: Transforming algorithmic outputs into "human-like" communication to make users feel personally valued.
 
 ---
 
-## Project Components 💻
+## 💾 Datasets
 
-### Data Acquisition and Preparation
-* **Raw Data Acquisition:** The project utilized the public MovieLens dataset from Kaggle, which includes user-movie interactions.
-* **Dataset Scale:** The system processed 1,000,209 anonymous ratings of approximately 3,900 movies.
-* **User Base:** Data was derived from 6,040 MovieLens users.
-* **Key Features:** The processed data includes `userId`, `movieId`, `rating` (1-5 stars), and `timestamp`.
+The project utilizes the **MovieLens 1M dataset**:
 
-### Collaborative Filtering Implementation
-* **Logic:** The system identifies users with similar tastes (those who rated the same movies similarly) to answer: "What did people similar to me like?"
+* 
+**Users**: 6,040 
 
-### Recommendation Generation
-The project utilizes standard Collaborative Filtering techniques to generate results:
-* **User-Based Collaborative Filtering:** Finds a user's nearest neighbors based on rating patterns
+* 
+**Movies**: ~3,900 
 
-### Modules
-* **evenglert_ai_movie_recommender_1_user_data_exploration_clustering     :** Exploration of a user dataset for use in a recommendation engine
-* **evenglert_ai_movie_recommender_2_cluster_based_collaborative_filtering:** Cluster-based collaborative filtering using PCA, K-Means
-* **evenglert_ai_movie_recommender_3_user_based_collaborative_filtering_cosine_similarity:** User-Based Collaborative Filtering (UBCF) pipeline using cosine similarity to find similar users (neighbors)
-* **evenglert_ai_movie_recommender_4_user_based_collaborative_filtering_pearson_correlation:** Optimized User-Based Collaborative Filtering (UBCF) pipeline using Pearson correlation
+* 
+**Ratings**: ~1,000,000 
 
-### DatasetResources:
-* **MovieLens dataset:**  https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset
+| Dataset | Attributes | Role in Analysis |
+| --- | --- | --- |
+| **Users** | UserID, Gender, Age, Occupation, Zip-code | Used to enhance personalization.
+
+ |
+| **Ratings** | UserID, MovieID, Rating, Timestamp (dropped) | Used to construct the User-Item Matrix for training.
+
+ |
+| **Movies** | MovieID, Title, Genres | Used for interpreting results and presenting recommendations.
+
+ |
+
+---
+
+## 🧪 Recommendation Methods & Evaluation
+
+Multiple collaborative filtering (CF) approaches were tested to identify the best balance of accuracy and efficiency.
+
+### Performance Comparison
+
+| CF Approach | Precision@10 | Recall@10 | F1-Score@10 | Execution Time | Outcome |
+| --- | --- | --- | --- | --- | --- |
+| **User-Based (Cosine)** | **0.2325** | **0.8358** | **0.3414** | **143 sec** | <br>**Selected Model** 
+
+ |
+| User-Based (Pearson) | 0.0334 | 0.2498 | 0.0575 | ~128 min | Rejected 
+
+ |
+| Cluster-Based | 0.0002 | 0.0023 | 0.0004 | 252 sec | Fast but poor quality 
+
+ |
+| Item-Based | 0.0018 | 0.0175 | 0.0033 | ~4.4 hrs | Rejected |
+---
+## 🧠 Final Architecture
+
+### A. Core Recommendation Engine
+
+The system uses **User-Based Collaborative Filtering with Cosine Similarity**.
+
+* **Similarity Metric**: Cosine Similarity on the User–Item Matrix.
+
+* **Neighbor Selection**: Users with the most similar rating vectors are chosen.
+
+* **Logic**: Recommends highly-rated movies from similar neighbors, excluding those the user has already seen.
+
+### B. Personalization Layer (LLM Integration)
+
+A pre-trained LLM is integrated via the **Ollama API** to enhance the user experience.
+
+* **Purpose**: Generate friendly, exciting, and natural-sounding messages to introduce the recommendations.
+
+* **Prompt Engineering**: The LLM receives the user's name, job, and age alongside movie titles to create a customized pitch (e.g., *"You are a friendly and enthusiastic movie recommender for 'WatchIt'..."*).
+
+* **Goal**: Transform data into human-centered communication to increase trust and perceived value.
+
+---
+## 🚀 End-to-End Workflow
+1. **Data Ingestion**: Loading raw MovieLens data.
+2. **Preprocessing**: Cleaning and constructing the User–Item Matrix.
+3. **Model Execution**: Running the CF model and evaluating performance.
+4. **Recommendation**: Generating the top-N movie list.
+5. **Personalization**: Using the LLM to create a tailored introduction.
+6. **Delivery**: Sending the final recommendations to the user via API.
+---
+
+## Resources
+
+* **MovieLens 1M Dataset**: [Kaggle Link](https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset).
