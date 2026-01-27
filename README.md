@@ -81,6 +81,7 @@ Modules
 * **evenglert_ai_movie_recommender_3_user_based_collaborative_filtering_cosine_similarity:** User-Based Collaborative Filtering (UBCF) pipeline using cosine similarity to find similar users (neighbors)
 * **evenglert_ai_movie_recommender_4_user_based_collaborative_filtering_pearson_correlation:** Optimized User-Based Collaborative Filtering (UBCF) pipeline using Pearson correlation
 * **evenglert_ai_movie_recommender_5_hybrid_collaborative_filtering_heatmap:** Hybrid User + Item Collaborative Filtering with Cosine Similarity
+* **evenglert_ai_movie_recommender_6_hybrid_collaborative_filtering_demographics:** Hybrid User-Based (Ratings + Demographics) Collaborative Filtering
 
 ## Resources
 
