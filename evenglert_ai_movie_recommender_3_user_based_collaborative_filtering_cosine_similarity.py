@@ -136,7 +136,7 @@
 # ====================================================================================
 # User-Based Collaborative Filtering with Cosine Similarity and Stratified 5-Fold CV
 # ====================================================================================
-
+from pathlib import Path
 import pandas as pd
 import numpy as np
 import random
@@ -149,8 +149,10 @@ from sklearn.model_selection import StratifiedKFold
 # ------------------------------------------------------------
 # Configuration
 # ------------------------------------------------------------
-RATING_FILE_PATH = "ratings.dat"   # Path to ratings dataset
-MOVIES_FILE_PATH = "movies.dat"    # Path to movies dataset
+BASE_DIR = Path(__file__).resolve().parent
+RATING_FILE_PATH = BASE_DIR / 'ratings.dat'
+MOVIES_FILE_PATH = BASE_DIR / 'movies.dat'
+USERS_FILE_PATH = BASE_DIR / 'users.dat'
 
 TOP_N = 10                         # Number of top recommendations per user
 RELEVANCE_THRESHOLD = 4.0          # Minimum rating to consider an item relevant
@@ -222,6 +224,7 @@ def load_data():
     """
     rating_cols = ["UserID", "MovieID", "Rating", "Timestamp"]
     movie_cols = ["MovieID", "Title", "Genres"]
+    users_cols = ["UserID", "Gender", "Age", "Occupation", "Zip-code"]
 
     # Load ratings, remove timestamp column
     ratings_df = pd.read_csv(
@@ -240,8 +243,17 @@ def load_data():
         names=movie_cols,
         encoding="latin-1"
     )
+    
+    # Load users.dat
+    users_df = pd.read_csv(
+        USERS_FILE_PATH,
+        sep="::",
+        engine="python",
+        names=users_cols,
+        encoding="latin-1"
+    )
 
-    return ratings_df, movies_df
+    return ratings_df, movies_df, users_df
 
 # ------------------------------------------------------------
 # User-Based Collaborative Filtering
@@ -362,7 +374,7 @@ def main():
     total_start = time.time()
 
     # Load data
-    ratings_df, movies_df = load_data()
+    ratings_df, movies_df, users_df = load_data()
     print(f"Total Ratings: {len(ratings_df)}")
 
     # Run stratified cross-validation and collect metrics
@@ -399,6 +411,50 @@ def main():
     )
     print(f"* Total Execution Time: {total_time:.2f} seconds ⏱️")
     print("=================================================\n")
+    
+    # Save TOP 3 recommendations for each user in a csv-file 
+    final_recs = generate_user_based_recommendations(ratings_df)
+    user_item_matrix = ratings_df.pivot(index='UserID', columns='MovieID', values='Rating')
+    
+    target_user = random.choice(user_item_matrix.index)
+    sample_recs = final_recs[final_recs['UserID'] == target_user].sort_values('Predicted_Rating', ascending=False)
+    enriched = sample_recs.merge(movies_df, on='MovieID')
+    print(f"\nTop {TOP_N} Recommendations for User {target_user}")
+    print(enriched[['Title', 'Genres', 'Predicted_Rating']].to_string(index=False))
+    
+    # --- Final Step: Top 3 Unwatched Movie Recommendations for Every User ---
+    print("\n--- Generating Top 3 Unwatched Movie Recommendations for Each User ---")
+    
+    top_3_all_users = []
+    
+    for user_id in users_df['UserID'].unique():
+        # Get user's watched movies
+        watched_movies = ratings_df[ratings_df['UserID'] == user_id]['MovieID'].unique()
+        
+        # Get recommendations from the previously generated final_recs
+        user_recs = final_recs[final_recs['UserID'] == user_id]
+    
+        # Filter out already watched movies
+        unwatched_recs = user_recs[~user_recs['MovieID'].isin(watched_movies)]
+    
+        # Get top 3 based on predicted rating
+        top3 = unwatched_recs.sort_values(by='Predicted_Rating', ascending=False).head(3)
+    
+        # Merge with movie titles
+        top3_enriched = top3.merge(movies_df, on='MovieID')[['UserID', 'Title', 'Genres', 'Predicted_Rating']]
+        top_3_all_users.append(top3_enriched)
+    
+    # Combine all into one DataFrame
+    top3_df = pd.concat(top_3_all_users, ignore_index=True)
+    
+    # Print or save to CSV
+    print(f"\nTop 3 Unwatched Recommendations per User (sample of 10):")
+    print(top3_df.head(10).to_string(index=False))
+    
+    # Optionally save to file
+    top3_df.to_csv("top3_recommendations_per_user_cf_cosine.csv", index=False, encoding='utf-8')
+    print("\n✅ Saved full recommendations to 'top3_recommendations_per_user_cf_cosine.csv'")
+
 
 # ------------------------------------------------------------
 if __name__ == "__main__":
