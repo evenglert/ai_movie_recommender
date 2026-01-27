@@ -36,12 +36,15 @@ Multiple collaborative filtering (CF) approaches were tested to identify the bes
 
 ### Performance Comparison
 
-| CF Approach | Precision@10 | Recall@10 | F1-Score@10 | Execution Time | Outcome |
-| --- | --- | --- | --- | --- | --- |
-| **User-Based (Cosine)** | **0.2325** | **0.8358** | **0.3414** | **143 sec** | <br>**Selected Model** |
-| User-Based (Pearson) | 0.0334 | 0.2498 | 0.0575 | ~128 min | Rejected |
-| Cluster-Based | 0.0002 | 0.0023 | 0.0004 | 252 sec | Fast but poor quality |
-| Item-Based | 0.0018 | 0.0175 | 0.0033 | ~4.4 hrs | Rejected |
+| Approach                         | Precision@10 | Recall@10 | F1-Score@10 | Execution Time            |
+|---------------------------------|-------------|-----------|-------------|---------------------------|
+| **User-Based CF (Cosine)**       | **0.2325**  | **0.8358** | **0.3414**  | **143 sec** (27 sec per fold) |
+| User-Based CF (Pearson)          | 0.0334      | 0.2498    | 0.0575      | ~2.13 hrs                 |
+| Cluster-Based CF                  | 0.0002      | 0.0023    | 0.0004      | 252 sec (50 sec per fold) |
+| Item-Based CF                     | 0.0018      | 0.0175    | 0.0033      | ~4.4 hrs                  |
+| User CF + Hybrid + Clustering     | 0.0265      | 0.2258    | 0.0468      | ~9 hrs                     |
+| Hybrid CF (Ratings + Demographics)| 0.0268      | 0.2071    | 0.0463      | ~1 hr                 |
+
 ---
 ## 🧠 Final Architecture
 
