@@ -86,6 +86,8 @@ Modules
 * **evenglert_ai_movie_recommender_5_hybrid_collaborative_filtering_heatmap:** Hybrid User + Item Collaborative Filtering with Cosine Similarity
 * **evenglert_ai_movie_recommender_6_hybrid_collaborative_filtering_demographics:** Hybrid User-Based (Ratings + Demographics) Collaborative Filtering
 * **evenglert_ai_movie_recommender_7_item_based_collaborative_filtering:** Item-Based Collaborative Filtering with Pearson correlation between movies using the item-user matrix
+* **evenglert_ai_movie_recommender_8_llm:** LLM-enhanced personalized movie recommendations
+* **evenglert_ai_movie_recommender_9_llm_fastapi:** FastAPI service for LLM-enhanced personalized movie recommendations
 
 ## Resources
 
