@@ -3,7 +3,7 @@
 # ### Author: Evgeniya Englert
 # ### Last update: 2026-01-29
 # ## Summary
-# * FastAPI service for LLM-enhanced personalized movie recommendations
+# * FastAPI service for LLM-enhanced personalized movie recommendations via API
 # * This code generates user-centric message with movie recommendations using pre-trained LLM Ollama based on provided user information and pre-prepared in the previous step movie recommendations
 
 # FastAPI
