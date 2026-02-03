@@ -88,6 +88,12 @@ Modules
 * **evenglert_ai_movie_recommender_7_item_based_collaborative_filtering:** Item-Based Collaborative Filtering with Pearson correlation between movies using the item-user matrix
 * **evenglert_ai_movie_recommender_8_llm:** LLM-enhanced personalized movie recommendations
 * **evenglert_ai_movie_recommender_9_llm_fastapi:** FastAPI service for LLM-enhanced personalized movie recommendations
+---
+## HOW TO INSTALL
+1. Download MovieLens data set: [Kaggle Link](https://www.kaggle.com/datasets/odedgolden/movielens-1m-dataset).
+2. Install **evenglert_ai_movie_recommender_3_user_based_collaborative_filtering_cosine_similarity** in the same directory as MovieLens data set and run it to create recommendations.
+3. Install and run **evenglert_ai_movie_recommender_8_llm** to get personalized messaging locally (based on pre-computed recommendations). 
+4. Install and run **evenglert_ai_movie_recommender_9_llm_fastapi** to get personalized messaging via FastAPI (based on pre-computed recommendations).
 
 ## Resources
 
