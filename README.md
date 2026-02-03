@@ -1,6 +1,6 @@
 # README: AI-Powered Movie Recommendation System 🎬✨
 
-This repository contains the documentation and architectural overview for the **AI-Powered Movie Recommendation System**, a final project by **Evgeniya Englert**. The system addresses user retention challenges on streaming platforms by merging traditional collaborative filtering with a **Large Language Model (LLM)** for a human-centered experience.
+This repository contains the documentation and architectural overview for the **AI-Powered Movie Recommendation System**, a DS project by **Evgeniya Englert**. The system addresses user retention challenges on streaming platforms by merging traditional collaborative filtering with a **Large Language Model (LLM)** for a human-centered experience.
 
 ---
 
